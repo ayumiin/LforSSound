@@ -41,9 +41,60 @@ class MainActivity : AppCompatActivity() {
                drumImage.setImageResource(R.drawable.drum_image)
            }
            true
-
-
        }
 
+        //ピアノのサウンドファイルを読み込んでプレイヤーをつくる
+        val pianoSound = MediaPlayer.create(this,R.raw.piano_sound)
+
+        //ピアノがタッチされた時に呼ばれる
+        pianoImage.setOnTouchListener{view, event ->
+
+            //タッチが始まった時に
+            if(event.action ==MotionEvent.ACTION_DOWN){
+
+                //ピアノが鳴っている画像に切り替える
+                pianoImage.setImageResource(R.drawable.piano_playing_image)
+
+                //ピアノの音を巻き戻す
+                pianoSound.seekTo(0)
+
+                //ピアノの音を再生する
+                pianoSound.start()
+            }
+            else if (event.action == MotionEvent.ACTION_UP){
+
+                //ピアノが鳴っていない画像に切り替える
+                pianoImage.setImageResource(R.drawable.piano_image)
+            }
+
+            true
+        }
+
+        //ギターのサウンドファイルを読み込んでプレイヤーをつくる
+        val guitarSound = MediaPlayer.create(this,R.raw.guitar_sound)
+
+        //ピアノがタッチされた時に呼ばれる
+        guitarImage.setOnTouchListener{view, event ->
+
+            //タッチが始まった時に
+            if(event.action ==MotionEvent.ACTION_DOWN){
+
+                //ピアノが鳴っている画像に切り替える
+                guitarImage.setImageResource(R.drawable.guitar_playing_image)
+
+                //ピアノの音を巻き戻す
+                guitarSound.seekTo(0)
+
+                //ピアノの音を再生する
+                guitarSound.start()
+            }
+            else if (event.action == MotionEvent.ACTION_UP){
+
+                //ピアノが鳴っていない画像に切り替える
+                guitarImage.setImageResource(R.drawable.guitar_image)
+            }
+
+            true
+        }
     }
 }
